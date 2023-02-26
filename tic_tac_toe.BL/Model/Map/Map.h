@@ -5,27 +5,30 @@
 
 typedef unsigned short u_short;
 
-namespace map_mdl
+namespace model
 {
-	class Map
+	namespace map
 	{
-	public:
-		Map();
-		~Map() = default;
-		Map(const Map& other) = delete;
+		class Map
+		{
+		public:
+			Map();
+			~Map() = default;
+			Map(const Map& other) = delete;
 
-		char& GetElement(const u_short row, const u_short column);
-		void SetElement(const u_short row, const u_short column, char symbol);
+			char& GetElement(const u_short row, const u_short column);
+			void SetElement(const u_short column, const u_short row, char symbol);
 
-		u_short GetRow() const;
-		u_short GetColumn() const;
+			u_short GetAmountRow() const;
+			u_short GetAmountColumn() const;
 
-	private:
-		u_short m_ROW;
-		u_short m_COLUMN;
+		private:
+			u_short m_ROW;
+			u_short m_COLUMN;
 
-		char m_map[3][5];
-	};
+			char m_map[3][3];
+		};
+	}
 }
 
 #endif // _MAP_

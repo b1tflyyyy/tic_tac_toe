@@ -1,23 +1,21 @@
 #include "MapController.h"
 
-namespace map_ctrl
+namespace controller
 {
-	void MapController::Print(map_mdl::Map& map) const
+	namespace map
 	{
-		system("cls");
-
-		for (u_short i = 0; i < map.GetRow(); i++)
+		bool MapController::SetPlayerOnMap(model::map::Map& map, 
+										   const u_short x, 
+			                               const u_short y,  
+										   const char player)
 		{
-			for (u_short j = 0; j < map.GetColumn(); j++)
+			if (x > map.GetAmountColumn() - 1 || y > map.GetAmountRow() - 1)
 			{
-				std::cout << map.GetElement(i, j);
+				return false;
 			}
-			std::cout << '\n';
-		}
-	}
 
-	void MapController::SetPlayerOnMap(map_mdl::Map& map, const u_short x, const u_short y, const char player)
-	{
-		map.SetElement(y, x, player);
+			map.SetElement(x, y, player);
+			return true;
+		}
 	}
 }
