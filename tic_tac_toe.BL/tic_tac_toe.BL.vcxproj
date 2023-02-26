@@ -20,11 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller\MapController\MapController.h" />
+    <ClInclude Include="Controller\PlayerController\PlayerController.h" />
     <ClInclude Include="Model\Map\Map.h" />
+    <ClInclude Include="Model\Player\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controller\MapController\MapController.cpp" />
+    <ClCompile Include="Controller\PlayerController\PlayerController.cpp" />
     <ClCompile Include="Model\Map\Map.cpp" />
+    <ClCompile Include="Model\Player\Player.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

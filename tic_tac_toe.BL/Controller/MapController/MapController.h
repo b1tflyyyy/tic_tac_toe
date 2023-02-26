@@ -1,9 +1,10 @@
 #pragma once
 
-#ifndef _MapController_
-#define _MapController_
+#ifndef _MapController_H_
+#define _MapController_H_
 
 #include "..//..//Model/Map/Map.h"
+#include "..//..//Model/Player/Player.h"
 
 typedef unsigned short u_short;
 
@@ -22,8 +23,24 @@ namespace controller
 								const u_short x, 
 								const u_short y, 
 								const char player);
+
+			bool IsPlayerWin(const model::map::Map& map,
+							 const model::player::Player& current_player);
+
+		private:
+			bool HorizontalCheck(const model::map::Map& map,
+				                 const model::player::Player& current_player);
+			
+			bool VerticalCheck(const model::map::Map& map,
+							   const model::player::Player& current_player);
+
+			bool DiagonalCheckFromTopLeft(const model::map::Map& map,
+										  const model::player::Player& current_player);
+			
+			bool DiagonalCheckFromTopRight(const model::map::Map& map,
+										   const model::player::Player& current_player);
 		};
 	}
 }
 
-#endif
+#endif // _MapController_H_

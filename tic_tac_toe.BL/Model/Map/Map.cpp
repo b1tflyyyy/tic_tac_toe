@@ -16,7 +16,7 @@ namespace model
 			}
 		}
 
-		char& Map::GetElement(const u_short row, const u_short column)
+		char Map::GetElement(const u_short row, const u_short column) const
 		{
 			return m_map[row][column];
 		}
