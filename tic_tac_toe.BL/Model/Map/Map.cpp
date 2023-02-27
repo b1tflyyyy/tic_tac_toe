@@ -21,7 +21,7 @@ namespace model
 			return m_map[row][column];
 		}
 
-		void Map::SetElement(const u_short column, const u_short row, char symbol)
+		void Map::SetElement(const u_short row, const u_short column, char symbol)
 		{
 			m_map[row][column] = symbol;
 		}

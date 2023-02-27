@@ -4,19 +4,19 @@ namespace controller
 {
 	namespace map
 	{
-		// TODO: Remove the ability to place the player in an existing place.
-
 		bool MapController::SetPlayerOnMap(model::map::Map& map, 
 										   const u_short x, 
 			                               const u_short y,  
 										   const char player)
 		{
-			if (x > map.GetAmountColumn() - 1 || y > map.GetAmountRow() - 1)
+			if (x > map.GetAmountColumn() - 1 || 
+				y > map.GetAmountRow() - 1 ||
+				!IsCellEmpty(map, y, x))
 			{
 				return false;
 			}
 
-			map.SetElement(x, y, player);
+			map.SetElement(y, x, player);
 			return true;
 		}
 
@@ -99,6 +99,13 @@ namespace controller
 			}
 
 			return false;
+		}
+
+		bool MapController::IsCellEmpty(const model::map::Map& map,
+										const int y,
+										const int x)
+		{
+			return map.GetElement(y, x) == ' ';
 		}
 	}
 }

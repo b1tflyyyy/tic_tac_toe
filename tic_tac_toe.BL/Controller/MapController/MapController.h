@@ -39,6 +39,10 @@ namespace controller
 			
 			bool DiagonalCheckFromTopRight(const model::map::Map& map,
 										   const model::player::Player& current_player);
+
+			bool IsCellEmpty(const model::map::Map& map,
+				             const int x,
+							 const int y);
 		};
 	}
 }

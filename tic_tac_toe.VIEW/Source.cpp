@@ -6,8 +6,9 @@
 #include "../tic_tac_toe.BL/Model/Player/Player.h"
 #include "../tic_tac_toe.BL/Controller/PlayerController/PlayerController.h"
 
-void Print(model::map::Map& map);
+#define DEBUG_LOGS true
 
+void Print(model::map::Map& map);
 
 int main()
 {
@@ -17,18 +18,21 @@ int main()
 	controller::map::MapController mapController;
 	controller::player::PlayerController playerController;
 
-	mapController.SetPlayerOnMap(map, 0, 2, player.GetPlayer());
-	mapController.SetPlayerOnMap(map, 0, 1, player.GetPlayer());
-	
-	playerController.ChangePlayer(player);
+#if DEBUG_LOGS
+
+	std::cout << "----------------LOGS----------------\n";
 	
 	mapController.SetPlayerOnMap(map, 0, 0, player.GetPlayer());
 	mapController.SetPlayerOnMap(map, 1, 0, player.GetPlayer());
 	mapController.SetPlayerOnMap(map, 2, 0, player.GetPlayer());
-	
+
+	std::cout << "set player state: " << mapController.SetPlayerOnMap(map, 1, 1, player.GetPlayer()) << '\n';
+	std::cout << "victory state: " << mapController.IsPlayerWin(map, player) << '\n';
+
+	std::cout << '\n' << '\n';
 	Print(map);
 
-	std::cout << mapController.IsPlayerWin(map, player) << '\n';
+#endif
 
 	return 0;
 }
@@ -36,7 +40,9 @@ int main()
 
 void Print(model::map::Map& map)
 {
+#if !DEBUG_LOGS
 	system("cls");
+#endif
 
 	for (u_short i = 0; i < map.GetAmountRow(); i++)
 	{
