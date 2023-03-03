@@ -7,7 +7,7 @@ namespace controller
 		bool MapController::SetPlayerOnMap(model::map::Map& map, 
 										   const u_short x, 
 			                               const u_short y,  
-										   const char player)
+										   const model::player::Player& player)
 		{
 			if (x > map.GetAmountColumn() - 1 || 
 				y > map.GetAmountRow() - 1 ||
@@ -16,7 +16,7 @@ namespace controller
 				return false;
 			}
 
-			map.SetElement(y, x, player);
+			map.SetElement(y, x, player.GetPlayer());
 			return true;
 		}
 
@@ -102,10 +102,21 @@ namespace controller
 		}
 
 		bool MapController::IsCellEmpty(const model::map::Map& map,
-										const int y,
-										const int x)
+										const u_short y,
+										const u_short x)
 		{
 			return map.GetElement(y, x) == ' ';
+		}
+
+		void MapController::ClearMap(model::map::Map& map)
+		{
+			for (u_short i = 0; i < map.GetAmountRow(); i++)
+			{
+				for (u_short j = 0; j < map.GetAmountColumn(); j++)
+				{
+					map.SetElement(i, j, ' ');
+				}
+			}
 		}
 	}
 }
