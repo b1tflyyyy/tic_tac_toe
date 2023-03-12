@@ -5,8 +5,8 @@ namespace controller
 	namespace map
 	{
 		bool MapController::SetPlayerOnMap(model::map::Map& map, 
-										   const u_short x, 
-			                               const u_short y,  
+										   const std::uint16_t x,
+			                               const std::uint16_t y,
 										   const model::player::Player& player)
 		{
 			if (x > map.GetAmountColumn() - 1 || 
@@ -20,8 +20,8 @@ namespace controller
 			return true;
 		}
 
-		bool MapController::IsPlayerWin(const model::map::Map& map,
-										const model::player::Player& current_player)
+		bool MapController::IsWinCombination(const model::map::Map& map,
+										     const model::player::Player& current_player)
 		{
 			if (VerticalCheck(map, current_player))
 			{
@@ -46,7 +46,7 @@ namespace controller
 		bool MapController::HorizontalCheck(const model::map::Map& map,
 											const model::player::Player& current_player)
 		{
-			for (u_short i = 0; i < map.GetAmountRow(); i++)
+			for (std::uint16_t i = 0; i < map.GetAmountRow(); ++i)
 			{
 				if (map.GetElement(i, 0) == current_player.GetPlayer() &&
 					map.GetElement(i, 1) == current_player.GetPlayer() &&
@@ -62,7 +62,7 @@ namespace controller
 		bool MapController::VerticalCheck(const model::map::Map& map,
 										  const model::player::Player& current_player)
 		{
-			for (u_short i = 0; i < map.GetAmountColumn(); i++)
+			for (std::uint16_t i = 0; i < map.GetAmountColumn(); ++i)
 			{
 				if (map.GetElement(0, i) == current_player.GetPlayer() &&
 					map.GetElement(1, i) == current_player.GetPlayer() &&
@@ -102,17 +102,17 @@ namespace controller
 		}
 
 		bool MapController::IsCellEmpty(const model::map::Map& map,
-										const u_short y,
-										const u_short x)
+										const std::uint16_t y,
+										const std::uint16_t x)
 		{
 			return map.GetElement(y, x) == ' ';
 		}
 
 		void MapController::ClearMap(model::map::Map& map)
 		{
-			for (u_short i = 0; i < map.GetAmountRow(); i++)
+			for (std::uint16_t i = 0; i < map.GetAmountRow(); ++i)
 			{
-				for (u_short j = 0; j < map.GetAmountColumn(); j++)
+				for (std::uint16_t j = 0; j < map.GetAmountColumn(); ++j)
 				{
 					map.SetElement(i, j, ' ');
 				}

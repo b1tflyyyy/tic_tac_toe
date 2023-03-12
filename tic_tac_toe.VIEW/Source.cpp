@@ -7,7 +7,6 @@
 #include "../tic_tac_toe.BL/Model/Player/Player.h"
 #include "../tic_tac_toe.BL/Controller/PlayerController/PlayerController.h"
 
-// TODO: add comments
 
 void Print(model::map::Map& map);
 
@@ -24,10 +23,11 @@ int main()
 	controller::map::MapController mapController;
 	controller::player::PlayerController playerController;
 
-	u_short x = 0;
-	u_short y = 0;
+	std::uint16_t x = 0;
+	std::uint16_t y = 0;
 
-	u_short counter = 0;
+
+	std::uint16_t counter = 0;
 
 	while (true)
 	{
@@ -52,7 +52,7 @@ int main()
 		}
 		if (counter >= 5)
 		{
-			if (mapController.IsPlayerWin(map, player))
+			if (mapController.IsWinCombination(map, player))
 			{
 				Print(map);
 
@@ -64,7 +64,7 @@ int main()
 
 				std::cout << "If you want to continue the game, write 0, otherwise 1.\n";
 				
-				int input = 0;
+				std::uint16_t input = 0;
 				std::cin >> input;
 
 				if (input)
@@ -85,9 +85,9 @@ void Print(model::map::Map& map)
 {
 	system("cls");
 
-	for (u_short i = 0; i < map.GetAmountRow(); i++)
+	for (std::uint16_t i = 0; i < map.GetAmountRow(); ++i)
 	{
-		for (u_short j = 0; j < map.GetAmountColumn(); j++)
+		for (std::uint16_t j = 0; j < map.GetAmountColumn(); ++j)
 		{
 			std::cout << map.GetElement(i, j);
 

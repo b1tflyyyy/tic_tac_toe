@@ -6,9 +6,8 @@
 #include "..//..//Model/Map/Map.h"
 #include "..//..//Model/Player/Player.h"
 
-// TODO: add new function -> MapClear
+#include <iostream>
 
-typedef unsigned short u_short;
 
 namespace controller
 {
@@ -22,12 +21,12 @@ namespace controller
 			MapController(const MapController& other) = delete;
 
 			bool SetPlayerOnMap(model::map::Map& map, 
-								const u_short x, 
-								const u_short y, 
+								const std::uint16_t x,
+								const std::uint16_t y,
 								const model::player::Player& player);
 
 			// rename it
-			bool IsPlayerWin(const model::map::Map& map,
+			bool IsWinCombination(const model::map::Map& map,
 							 const model::player::Player& current_player);
 
 			void ClearMap(model::map::Map& map);
@@ -46,8 +45,8 @@ namespace controller
 										   const model::player::Player& current_player);
 
 			bool IsCellEmpty(const model::map::Map& map,
-				             const u_short y,
-							 const u_short x);
+				             const std::uint16_t y,
+							 const std::uint16_t x);
 		};
 	}
 }

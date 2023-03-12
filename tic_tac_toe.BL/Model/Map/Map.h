@@ -3,7 +3,7 @@
 #ifndef _MAP_H_
 #define _MAP_H_
 
-typedef unsigned short u_short;
+#include <iostream>
 
 namespace model
 {
@@ -16,15 +16,15 @@ namespace model
 			~Map() = default;
 			Map(const Map& other) = delete;
 
-			char GetElement(const u_short row, const u_short column) const;
-			void SetElement(const u_short column, const u_short row, char symbol);
+			char GetElement(const std::uint16_t, const std::uint16_t column) const;
+			void SetElement(const std::uint16_t column, const std::uint16_t row, char symbol);
 
-			u_short GetAmountRow() const;
-			u_short GetAmountColumn() const;
+			std::uint16_t GetAmountRow() const;
+			std::uint16_t GetAmountColumn() const;
 
 		private:
-			u_short m_ROW;
-			u_short m_COLUMN;
+			std::uint16_t m_ROW;
+			std::uint16_t m_COLUMN;
 
 			char m_map[3][3];
 		};

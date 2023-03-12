@@ -7,31 +7,31 @@ namespace model
 		Map::Map() :
 			m_ROW(3), m_COLUMN(3)
 		{
-			for (u_short i = 0; i < m_ROW; i++)
+			for (std::uint16_t i = 0; i < m_ROW; ++i)
 			{
-				for (u_short j = 0; j < m_COLUMN; j++)
+				for (std::uint16_t j = 0; j < m_COLUMN; ++j)
 				{
 					m_map[i][j] = ' ';
 				}
 			}
 		}
 
-		char Map::GetElement(const u_short row, const u_short column) const
+		char Map::GetElement(const std::uint16_t row, const std::uint16_t column) const
 		{
 			return m_map[row][column];
 		}
 
-		void Map::SetElement(const u_short row, const u_short column, char symbol)
+		void Map::SetElement(const std::uint16_t row, const std::uint16_t column, char symbol)
 		{
 			m_map[row][column] = symbol;
 		}
 
-		u_short Map::GetAmountRow() const
+		std::uint16_t Map::GetAmountRow() const
 		{
 			return m_ROW;
 		}
 
-		u_short Map::GetAmountColumn() const
+		std::uint16_t Map::GetAmountColumn() const
 		{
 			return m_COLUMN;
 		}
