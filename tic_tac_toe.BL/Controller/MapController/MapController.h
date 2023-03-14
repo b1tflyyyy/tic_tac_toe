@@ -25,11 +25,13 @@ namespace controller
 								const std::uint16_t y,
 								const model::player::Player& player);
 
-			// rename it
+			
 			bool IsWinCombination(const model::map::Map& map,
-							 const model::player::Player& current_player);
+							      const model::player::Player& current_player);
 
 			void ClearMap(model::map::Map& map);
+
+			bool IsDraw(const model::map::Map& map);
 
 		private:
 			bool HorizontalCheck(const model::map::Map& map,

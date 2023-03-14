@@ -20,6 +20,24 @@ namespace controller
 			return true;
 		}
 
+		bool MapController::IsDraw(const model::map::Map& map)
+		{
+			std::uint16_t counter = 0;
+
+			for (int i = 0; i < map.GetAmountRow(); ++i)
+			{
+				for (int j = 0; j < map.GetAmountColumn(); ++j)
+				{
+					if (map.GetElement(i, j) == ' ')
+					{
+						++counter;
+					}
+				}
+			}
+
+			return counter == 0;
+		}
+
 		bool MapController::IsWinCombination(const model::map::Map& map,
 										     const model::player::Player& current_player)
 		{

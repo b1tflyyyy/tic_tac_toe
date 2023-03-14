@@ -31,7 +31,7 @@ int main()
 
 	while (true)
 	{
-		counter++;
+		++counter;
 
 		Print(map);
 
@@ -64,6 +64,26 @@ int main()
 
 				std::cout << "If you want to continue the game, write 0, otherwise 1.\n";
 				
+				std::uint16_t input = 0;
+				std::cin >> input;
+
+				if (input)
+				{
+					return 0;
+				}
+			}
+			else if (mapController.IsDraw(map))
+			{
+				Print(map);
+
+				std::cout << "Draws.\n";
+
+				// clear the data
+				counter = 0;
+				mapController.ClearMap(map);
+
+				std::cout << "If you want to continue the game, write 0, otherwise 1.\n";
+
 				std::uint16_t input = 0;
 				std::cin >> input;
 
